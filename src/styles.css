@@ -1024,6 +1024,183 @@ h1 em,h2 em {
     line-height:.6
 }
 
+.bio-page {
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    background:var(--canvas);
+    padding:0
+}
+
+.bio-header {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px var(--gutter)
+}
+
+.bio-brand {
+    display:flex;
+    align-items:center;
+    gap:11px;
+    text-decoration:none;
+    color:var(--ink);
+    font-size:13px;
+    line-height:1.05
+}
+
+.bio-brand strong {
+    font-weight:500
+}
+
+.bio-brand em {
+    font-style:italic;
+    font-family:var(--serif)
+}
+
+.bio-mark {
+    display:grid;
+    place-items:center;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:var(--ink);
+    color:var(--cream);
+    font:19px var(--serif);
+    transform:rotate(-10deg)
+}
+
+.bio-instagram {
+    display:grid;
+    place-items:center;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    color:var(--ink);
+    border:1px solid var(--line)
+}
+
+.bio-main {
+    flex:1;
+    padding:14px var(--gutter) 40px;
+    max-width:520px;
+    width:100%;
+    margin:0 auto
+}
+
+.bio-eyebrow {
+    font:10px var(--mono);
+    letter-spacing:.14em;
+    color:var(--amber-text);
+    margin:0 0 12px
+}
+
+.bio-main h1 {
+    font:600 37px/1.06 var(--serif);
+    letter-spacing:-.03em;
+    margin:0 0 14px
+}
+
+.bio-main h1 em {
+    color:var(--amber-text)
+}
+
+.bio-intro {
+    font-size:14px;
+    line-height:1.6;
+    color:var(--muted);
+    margin:0 0 30px;
+    max-width:40ch
+}
+
+.bio-links {
+    display:flex;
+    flex-direction:column;
+    gap:11px
+}
+
+.bio-link {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    min-height:56px;
+    padding:15px 19px;
+    border-radius:12px;
+    border:1px solid var(--line);
+    background:var(--cream);
+    color:var(--ink);
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    transition:transform var(--motion-fast) var(--ease-fluid),background var(--motion-fast) var(--ease-fluid)
+}
+
+.bio-link:active {
+    transform:scale(.985)
+}
+
+.bio-link svg {
+    flex:0 0 auto;
+    color:var(--amber-text)
+}
+
+.bio-link-primary {
+    background:var(--ink);
+    border-color:var(--ink);
+    color:var(--cream)
+}
+
+.bio-link-primary svg {
+    color:var(--gold)
+}
+
+.bio-benefit {
+    margin-top:26px;
+    padding:17px 19px;
+    border-radius:12px;
+    background:var(--moss-pill);
+    color:var(--moss);
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+    font:12px var(--mono)
+}
+
+.bio-benefit strong {
+    font-size:13px;
+    letter-spacing:.02em
+}
+
+.bio-meta {
+    margin-top:18px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    font:11px var(--mono);
+    color:var(--muted)
+}
+
+.bio-footer {
+    padding:20px var(--gutter) calc(20px + env(safe-area-inset-bottom,0px));
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    font:10px var(--mono);
+    color:var(--muted)
+}
+
+.bio-footer a {
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color:var(--amber-text);
+    text-decoration:underline;
+    text-underline-offset:3px;
+    min-height:44px
+}
+
 .closing h2 {
     margin:45px 0 37px
 }

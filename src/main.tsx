@@ -61,6 +61,39 @@ function Shell({ children, title, description }: { children: React.ReactNode; ti
   return <div className="site-shell"><header className="nav-wrap"><a className="brand" href="/"><span className="brand-mark">∞</span><span className="brand-name">Óticas<br /><i>Peixoto</i></span></a><a className="nav-cta" href={whatsappHref('Olá, Óticas Peixoto. Quero falar com vocês.')} target="_blank" rel="noreferrer">Falar no WhatsApp <ArrowUpRight size={15} /></a></header><main className="standalone-page section-pad"><nav className="breadcrumbs" aria-label="Breadcrumb"><a href="/">Início</a><span aria-hidden="true">/</span><span>{title}</span></nav><p className="section-kicker">ÓTICAS PEIXOTO</p><h1>{title}</h1><p className="standalone-description">{description}</p>{children}</main><footer className="footer section-pad"><div className="footer-bottom"><span>© {new Date().getFullYear()} Óticas Peixoto</span><a href="/privacidade">Privacidade</a><a href="/">Voltar para a home <ArrowUpRight size={15} /></a></div></footer></div>
 }
 
+function BioPage() {
+  useEffect(() => {
+    document.title = 'Óticas Peixoto — links'
+    document.querySelector('meta[name="description"]')?.setAttribute('content', 'Agende seu atendimento, veja armações e encontre a Óticas Peixoto em Taquara.')
+  }, [])
+
+  return (
+    <div className="bio-page">
+      <header className="bio-header">
+        <a className="bio-brand" href="/" aria-label="Óticas Peixoto, início">
+          <span className="bio-mark">∞</span>
+          <span><strong>Óticas</strong><br /><em>Peixoto</em></span>
+        </a>
+        <a className="bio-instagram" href="https://instagram.com/otica.peixoto_" target="_blank" rel="noreferrer" aria-label="Instagram Óticas Peixoto"><Instagram size={19} /></a>
+      </header>
+      <main className="bio-main">
+        <p className="bio-eyebrow">ÓPTICA ITINERANTE · TAQUARA, RJ</p>
+        <h1>Óculos escolhidos<br /><em>para você.</em></h1>
+        <p className="bio-intro">Curadoria de armações, exame computadorizado e atendimento personalizado — em casa, na empresa ou no consultório.</p>
+        <div className="bio-links">
+          <a className="bio-link bio-link-primary" href={whatsappHref('Olá, Óticas Peixoto. Quero agendar um atendimento.')} target="_blank" rel="noreferrer"><span>Agendar atendimento</span><ArrowUpRight size={18} /></a>
+          <a className="bio-link" href="/#curadoria"><span>Ver armações</span><ArrowUpRight size={18} /></a>
+          <a className="bio-link" href="/#modelo"><span>Atendimento para empresas</span><ArrowUpRight size={18} /></a>
+          <a className="bio-link" href="https://www.google.com/maps/search/?api=1&query=Rua+Dr.+Odim+Góis,+250,+Taquara,+Rio+de+Janeiro" target="_blank" rel="noreferrer"><span>Como chegar</span><ArrowUpRight size={18} /></a>
+        </div>
+        <div className="bio-benefit"><strong>Exame de vista gratuito</strong><span>na compra do óculos completo</span></div>
+        <div className="bio-meta"><span>Seg–Sex · 09h às 18h</span><span>Respondemos em até 12 horas</span></div>
+      </main>
+      <footer className="bio-footer"><span>Rua Dr. Odim Góis, 250 — Taquara</span><a href="/">Conheça o site completo <MoveRight size={15} /></a></footer>
+    </div>
+  )
+}
+
 function PrivacyPage() {
   return <Shell title="Privacidade, sem letra miúda." description="Como a Óticas Peixoto usa os dados que você envia pelo site."><div className="standalone-copy"><h2>O que coletamos</h2><p>Ao iniciar um agendamento, podemos receber seu nome, local de atendimento e interesse informado no formulário.</p><h2>Por que usamos</h2><p>Usamos esses dados apenas para responder sua solicitação, combinar horário e orientar o atendimento. Não vendemos seus dados.</p><h2>Contato</h2><p>Para dúvidas sobre privacidade ou para solicitar correção de dados, fale conosco pelo WhatsApp da Óticas Peixoto.</p></div></Shell>
 }
@@ -84,6 +117,7 @@ function App() {
 
   if (pathname === '/privacidade') return <PrivacyPage />
   if (pathname === '/obrigado') return <ThankYouPage />
+  if (pathname === '/bio') return <BioPage />
   if (pathname !== '/' && pathname !== '') return <NotFoundPage />
   return <HomePage />
 }
