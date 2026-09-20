@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.playwright-mcp/
+.DS_Store
+docs/handoff/
+
+# Arquivos de trabalho soltos na raiz do projeto
+/*.png
+/*.jpeg
+/*.jpg
+social-ai-team/
