@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Questionário de onboarding de marca da Óticas Peixoto.">
+  <title>Onboarding Óticas Peixoto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --canvas: #f7f3ec;
+      --surface: #eee7dc;
+      --paper: #fcfaf6;
+      --ink: #1c1b18;
+      --muted: #69635a;
+      --line: #d9d0c2;
+      --moss: #3e4a3d;
+      --amber: #a85a1a;
+      --clay: #d8c4a9;
+      --focus: #c87932;
+      --serif: 'Newsreader', Georgia, serif;
+      --sans: 'DM Sans', Arial, sans-serif;
+      --mono: 'Space Mono', monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --canvas: #191a17;
+        --surface: #252923;
+        --paper: #20221e;
+        --ink: #f4eee3;
+        --muted: #bdb5a8;
+        --line: #454b40;
+        --moss: #a8b99f;
+        --amber: #e7a05e;
+        --clay: #6f604d;
+        --focus: #f0b477;
+      }
+    }
+    :root[data-theme="dark"] {
+      --canvas: #191a17;
+      --surface: #252923;
+      --paper: #20221e;
+      --ink: #f4eee3;
+      --muted: #bdb5a8;
+      --line: #454b40;
+      --moss: #a8b99f;
+      --amber: #e7a05e;
+      --clay: #6f604d;
+      --focus: #f0b477;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      padding: 0 16px;
+      padding-block: 28px 56px;
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.55;
+    }
+    a { color: var(--amber); }
+    button, input, textarea { font: inherit; }
+    button { cursor: pointer; }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+    .page { max-width: 980px; margin: 0 auto; }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 16px;
+      margin-bottom: 48px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+    .brand-mark { color: var(--amber); font-size: 27px; line-height: 1; }
+    .brand-name { font-family: var(--serif); font-size: 20px; line-height: .85; }
+    .brand-name em { color: var(--amber); font-weight: 500; }
+    .actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    .button {
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      background: transparent;
+      color: var(--ink);
+      padding: 9px 13px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .button.primary { background: var(--moss); border-color: var(--moss); color: #fff; }
+    .button:hover { border-color: var(--amber); }
+    .eyebrow { color: var(--amber); font: 700 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+    h1, h2, h3 { text-wrap: balance; }
+    h1 { max-width: 720px; margin: 13px 0 18px; font: 500 clamp(3rem, 8vw, 6.4rem)/.88 var(--serif); letter-spacing: -.045em; }
+    h1 em { color: var(--amber); font-style: italic; }
+    .intro { max-width: 650px; color: var(--muted); font-size: 17px; }
+    .note {
+      margin-top: 28px;
+      border-left: 3px solid var(--amber);
+      background: var(--surface);
+      padding: 14px 17px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .progress-wrap { margin: 40px 0 54px; }
+    .progress-meta { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font: 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+    .progress-track { height: 5px; margin-top: 10px; background: var(--line); }
+    .progress-bar { width: 0; height: 100%; background: var(--amber); transition: width .2s ease; }
+    .section { border-top: 1px solid var(--line); padding: 42px 0 50px; }
+    .section-heading { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 28px; align-items: start; margin-bottom: 30px; }
+    .section-number { color: var(--amber); font: 700 12px var(--mono); letter-spacing: .08em; }
+    h2 { margin: 0; font: 500 clamp(2rem, 4.5vw, 3.45rem)/.95 var(--serif); letter-spacing: -.035em; }
+    h3 { margin: 34px 0 11px; font: 500 1.6rem/1 var(--serif); }
+    p { margin: 0 0 13px; }
+    .section-lead { max-width: 680px; color: var(--muted); }
+    .facts { display: grid; gap: 0; border-top: 1px solid var(--line); }
+    .fact { display: grid; grid-template-columns: minmax(150px, 240px) minmax(0, 1fr); gap: 20px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+    .fact strong { font-size: 13px; }
+    .fact span { color: var(--muted); }
+    .facts-note { margin-top: 15px; color: var(--amber); font-size: 13px; }
+    .known-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 28px; padding: 0; margin: 0; list-style: none; }
+    .known-list li { position: relative; padding-left: 18px; color: var(--muted); }
+    .known-list li::before { content: '—'; position: absolute; left: 0; color: var(--amber); }
+    .question { margin-top: 34px; padding-top: 26px; border-top: 1px solid var(--line); }
+    .question:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
+    label.question-label { display: block; margin-bottom: 5px; font-weight: 700; }
+    .prompt { margin-bottom: 12px; color: var(--muted); font-size: 14px; max-width: 700px; }
+    textarea, input[type="text"], input[type="url"] {
+      display: block;
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 12px 13px;
+      min-height: 48px;
+    }
+    textarea { min-height: 108px; resize: vertical; }
+    input::placeholder, textarea::placeholder { color: var(--muted); opacity: .7; }
+    .choice-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px 18px; }
+    .choice { display: flex; align-items: flex-start; gap: 9px; color: var(--muted); font-size: 14px; }
+    .choice input { accent-color: var(--amber); margin-top: 5px; }
+    .split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .caption-list { display: grid; gap: 12px; }
+    .caption-row { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 11px; align-items: start; }
+    .caption-index { color: var(--amber); font: 700 12px var(--mono); padding-top: 13px; }
+    .format-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    .format-table th, .format-table td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--line); }
+    .format-table th { color: var(--muted); font: 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .format-table input { width: 110px; }
+    .assets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .asset-group { padding: 20px; background: var(--surface); }
+    .asset-group h3 { margin-top: 0; }
+    .asset-group .choice { margin: 9px 0; }
+    .footer { border-top: 1px solid var(--line); padding-top: 26px; color: var(--muted); font-size: 13px; }
+    .footer strong { color: var(--ink); }
+    .saved { color: var(--muted); font: 11px var(--mono); }
+    .error { color: #a43f2f; font-size: 13px; }
+    @media (max-width: 680px) {
+      body { padding-block: 18px 38px; }
+      .topbar { align-items: flex-start; margin-bottom: 35px; }
+      .actions { max-width: 160px; }
+      h1 { font-size: clamp(2.8rem, 16vw, 5rem); }
+      .section-heading, .fact { grid-template-columns: 1fr; gap: 8px; }
+      .known-list, .choice-grid, .split, .assets { grid-template-columns: 1fr; }
+      .format-table { display: block; overflow-x: auto; }
+    }
+    @media print {
+      :root { --canvas: #fff; --surface: #f3f0eb; --paper: #fff; --ink: #000; --muted: #444; --line: #bbb; }
+      body { padding: 0; font-size: 11pt; }
+      .actions, .progress-wrap, .note, .saved { display: none; }
+      .topbar { margin-bottom: 30px; }
+      .section { break-inside: avoid; }
+      textarea, input[type="text"], input[type="url"] { border-color: #999; background: #fff; }
+      textarea { min-height: 85px; }
+      a { color: inherit; text-decoration: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Voltar ao início">
+        <span class="brand-mark" aria-hidden="true">∞</span>
+        <span class="brand-name">Óticas<br><em>Peixoto</em></span>
+      </a>
+      <div class="actions">
+        <span class="saved" id="saveStatus" role="status">Pronto para preencher</span>
+        <button class="button" type="button" id="clearButton">Limpar</button>
+        <button class="button primary" type="button" id="printButton">Imprimir / PDF</button>
+      </div>
+    </header>
+
+    <section id="top" aria-labelledby="page-title">
+      <div class="eyebrow">Onboarding de marca · questionário</div>
+      <h1 id="page-title">Óculos escolhidos <em>para você.</em></h1>
+      <p class="intro">Este formulário reúne o que já sabemos sobre a Óticas Peixoto e as perguntas que só o responsável pela marca pode responder. Responda com frases curtas. Não precisa escrever texto perfeito.</p>
+      <div class="note"><strong>Como enviar:</strong> preencha no navegador e use “Imprimir / PDF” para gerar um arquivo. As respostas ficam salvas automaticamente neste navegador enquanto você preenche.</div>
+    </section>
+
+    <div class="progress-wrap" aria-label="Progresso do preenchimento">
+      <div class="progress-meta"><span>Progresso</span><span id="progressText">0% respondido</span></div>
+      <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+    </div>
+
+    <form id="onboardingForm">
+      <section class="section" id="known" aria-labelledby="known-title">
+        <div class="section-heading">
+          <div class="section-number">PARTE 00</div>
+          <div><h2 id="known-title">O que já sabemos</h2><p class="section-lead">Revise os fatos abaixo. Corrija qualquer informação diretamente nos campos de validação.</p></div>
+        </div>
+        <div class="facts">
+          <div class="fact"><strong>Nome</strong><span>Óticas Peixoto</span></div>
+          <div class="fact"><strong>Instagram</strong><span><a href="https://www.instagram.com/otica.peixoto_/" target="_blank" rel="noreferrer">@otica.peixoto_</a></span></div>
+          <div class="fact"><strong>Nome exibido no Instagram</strong><span>ÓTICAS PEIXOTO / TAQUARA</span></div>
+          <div class="fact"><strong>Tagline</strong><span>Óculos escolhidos para você.</span></div>
+          <div class="fact"><strong>Bio</strong><span>👓 Pare de adiar seus óculos · 👁️ Exame de vista GRATUITO na compra do óculos completo · 🔽 WhatsApp 🔽</span></div>
+          <div class="fact"><strong>Localização</strong><span>Rua Dr. Odim Góis, 250 — Taquara, Rio de Janeiro — RJ</span></div>
+          <div class="fact"><strong>Área de atendimento</strong><span>Taquara, Jacarepaguá e bairros próximos; empresa, casa ou consultório</span></div>
+          <div class="fact"><strong>Horário</strong><span>Segunda a sexta, 09h às 18h</span></div>
+          <div class="fact"><strong>WhatsApp</strong><span>(21) 99322-6439</span></div>
+          <div class="fact"><strong>Instagram na captura</strong><span>289 seguidores, 46 posts — métrica pode mudar</span></div>
+        </div>
+        <div class="question">
+          <label class="question-label" for="factsCorrection">Algo acima está errado ou incompleto?</label>
+          <p class="prompt">Liste correções ou escreva “Tudo certo”.</p>
+          <textarea id="factsCorrection" name="factsCorrection" placeholder="Ex.: O horário correto aos sábados é..."> </textarea>
+        </div>
+
+        <h3>O que a Óticas Peixoto oferece</h3>
+        <ul class="known-list">
+          <li>Curadoria de armações.</li><li>Óculos de grau e solares.</li>
+          <li>Armações de acetato e metal.</li><li>Exame computadorizado.</li>
+          <li>Exame de vista gratuito na compra do óculos completo.</li><li>Atendimento em casa, empresa ou consultório.</li>
+          <li>Orientação conforme rosto, estilo e rotina.</li><li>Exemplos no site: Miro, Cora, Nilo, Lume, Iris e Vibe.</li>
+        </ul>
+        <div class="question">
+          <label class="question-label" for="offerCorrection">Algo acima não representa a oferta atual?</label>
+          <textarea id="offerCorrection" name="offerCorrection" placeholder="Escreva correções, serviços que faltam ou “Tudo certo”."></textarea>
+        </div>
+      </section>
+
+      <section class="section" id="gaps" aria-labelledby="gaps-title">
+        <div class="section-heading">
+          <div class="section-number">PARTE 01</div>
+          <div><h2 id="gaps-title">O que só você pode contar</h2><p class="section-lead">Estas respostas definem para quem a marca fala, o que deve aparecer e qual resultado o conteúdo precisa gerar.</p></div>
+        </div>
+        <div class="question"><label class="question-label" for="icp">1. Quem é o cliente ideal?</label><p class="prompt">Descreva em uma ou duas frases. Pense em idade, rotina, estilo, região, poder de compra e principal necessidade.</p><textarea id="icp" name="icp" placeholder="Ex.: Pessoas de... que precisam de... e valorizam..."></textarea></div>
+        <div class="question"><label class="question-label" for="heroes">2. Quais são os produtos ou serviços heróis?</label><p class="prompt">Quais armações, lentes, exames ou tipos de atendimento devem aparecer com mais frequência?</p><textarea id="heroes" name="heroes" placeholder="Liste produtos, serviços, modelos ou categorias prioritárias."></textarea></div>
+        <div class="question"><label class="question-label" for="differentiators">3. O que torna a Óticas Peixoto diferente?</label><p class="prompt">O que vocês fazem melhor ou de um jeito que concorrentes e óticas genéricas não fazem? Use palavras suas.</p><textarea id="differentiators" name="differentiators" placeholder="Nossa diferença é..."></textarea></div>
+        <div class="question"><label class="question-label">4. O que você quer que o Instagram faça pelo negócio?</label><p class="prompt">Escolha uma ou duas prioridades.</p><div class="choice-grid">
+          <label class="choice"><input type="checkbox" name="goals" value="Reconhecimento local"> Gerar reconhecimento local</label>
+          <label class="choice"><input type="checkbox" name="goals" value="Agendamentos WhatsApp"> Gerar agendamentos pelo WhatsApp</label>
+          <label class="choice"><input type="checkbox" name="goals" value="Vendas"> Vender armações e óculos</label>
+          <label class="choice"><input type="checkbox" name="goals" value="Empresas"> Atrair empresas para atendimento corporativo</label>
+          <label class="choice"><input type="checkbox" name="goals" value="Comunidade"> Criar comunidade e relacionamento</label>
+          <label class="choice"><input type="checkbox" name="goals" value="Educação"> Educar sobre visão, lentes e cuidados</label>
+          <label class="choice"><input type="checkbox" name="goals" value="Campanhas"> Apoiar lançamentos e campanhas</label>
+          <label class="choice"><input type="checkbox" name="goals" value="Outro"> Outro</label>
+        </div><textarea id="goalNotes" name="goalNotes" placeholder="Prioridade e contexto adicional..."></textarea></div>
+        <div class="question"><label class="question-label" for="currentSituation">5. Como está a rotina atual de conteúdo?</label><p class="prompt">Frequência, o que funciona, o que não funciona, o que gostaria de fazer mais e quem produz/aprova.</p><textarea id="currentSituation" name="currentSituation" placeholder="Publicamos... O que funciona é... Gostaríamos de..."></textarea></div>
+      </section>
+
+      <section class="section" id="assets" aria-labelledby="assets-title">
+        <div class="section-heading"><div class="section-number">PARTE 02</div><div><h2 id="assets-title">Assets para enviar</h2><p class="section-lead">Marque o que já existe e anote links ou observações. Para armações, precisamos do arquivo original — não screenshot.</p></div></div>
+        <div class="assets">
+          <div class="asset-group"><h3>Essenciais</h3>
+            <label class="choice"><input type="checkbox" name="assets" value="Cores oficiais"> Cores oficiais em hex ou documento de marca</label>
+            <label class="choice"><input type="checkbox" name="assets" value="Fontes"> Nomes das fontes oficiais</label>
+            <label class="choice"><input type="checkbox" name="assets" value="Logo PNG"> Logo em PNG transparente</label>
+            <label class="choice"><input type="checkbox" name="assets" value="Fotos produtos"> Fotos originais em alta resolução dos produtos heróis</label>
+            <label class="choice"><input type="checkbox" name="assets" value="Fotos atendimento"> Fotos de atendimento, equipe e espaço</label>
+          </div>
+          <div class="asset-group"><h3>Úteis</h3>
+            <label class="choice"><input type="checkbox" name="assets" value="Lifestyle"> Fotos de lifestyle, bastidores e eventos</label>
+            <label class="choice"><input type="checkbox" name="assets" value="Brand kit"> Manual de marca ou Canva Brand Kit</label>
+            <label class="choice"><input type="checkbox" name="assets" value="Posts referência"> 5–10 posts de referência</label>
+            <label class="choice"><input type="checkbox" name="assets" value="Legendas reais"> 3–5 legendas reais</label>
+            <label class="choice"><input type="checkbox" name="assets" value="Inspirações"> Perfis que inspiram e estilos a evitar</label>
+          </div>
+        </div>
+        <div class="question"><label class="question-label" for="assetLinks">Links, arquivos disponíveis ou observações</label><textarea id="assetLinks" name="assetLinks" placeholder="Cole links de pastas, Canva, Drive ou indique quais arquivos serão enviados."></textarea></div>
+      </section>
+
+      <section class="section" id="content" aria-labelledby="content-title">
+        <div class="section-heading"><div class="section-number">PARTE 03</div><div><h2 id="content-title">Marca e conteúdo</h2><p class="section-lead">Aqui entram as regras que fazem o conteúdo parecer Óticas Peixoto — e não uma marca genérica.</p></div></div>
+        <h3>Identidade visual</h3>
+        <div class="question"><label class="question-label" for="colorsConfirm">As cores usadas no site estão corretas para o Instagram?</label><textarea id="colorsConfirm" name="colorsConfirm" placeholder="Sim / não. Liste alterações, cores proibidas ou referências."></textarea></div>
+        <div class="split">
+          <div class="question"><label class="question-label" for="fonts">Quais fontes devem aparecer nas artes?</label><input type="text" id="fonts" name="fonts" placeholder="Ex.: Newsreader e DM Sans"></div>
+          <div class="question"><label class="question-label" for="symbol">O símbolo ∞ é oficial?</label><input type="text" id="symbol" name="symbol" placeholder="Sim, não ou explicar uso"></div>
+        </div>
+        <div class="question"><label class="question-label">Texto em arte deve usar:</label><div class="choice-grid"><label class="choice"><input type="radio" name="case" value="Caixa alta"> Caixa alta</label><label class="choice"><input type="radio" name="case" value="Title Case"> Title Case</label><label class="choice"><input type="radio" name="case" value="Misto"> Misto</label><label class="choice"><input type="radio" name="case" value="Outro"> Outro</label></div><input type="text" id="caseNotes" name="caseNotes" placeholder="Observação, se necessário"></div>
+        <h3>Formato assinatura</h3>
+        <div class="question"><label class="question-label" for="signatureFormat">Descreva o post mais reconhecível da Óticas Peixoto</label><p class="prompt">Conte passo a passo: imagem, texto, estrutura, legenda, CTA e frequência.</p><textarea id="signatureFormat" name="signatureFormat" placeholder="1. A imagem mostra...&#10;2. O texto diz...&#10;3. A legenda...&#10;4. O CTA..." ></textarea></div>
+        <div class="question"><label class="question-label" for="signatureExample">Exemplo visual ou link</label><input type="url" id="signatureExample" name="signatureExample" placeholder="https://... ou nome do arquivo enviado"></div>
+        <h3>Legendas reais</h3>
+        <p class="prompt">Cole 3–5 legendas já publicadas que soem exatamente como a marca. Este é um dos inputs mais importantes para evitar legendas genéricas.</p>
+        <div class="caption-list">
+          <div class="caption-row"><span class="caption-index">01</span><textarea id="caption1" name="caption1" aria-label="Legenda real 1" placeholder="Cole uma legenda real"></textarea></div>
+          <div class="caption-row"><span class="caption-index">02</span><textarea id="caption2" name="caption2" aria-label="Legenda real 2" placeholder="Cole uma legenda real"></textarea></div>
+          <div class="caption-row"><span class="caption-index">03</span><textarea id="caption3" name="caption3" aria-label="Legenda real 3" placeholder="Cole uma legenda real"></textarea></div>
+          <div class="caption-row"><span class="caption-index">04</span><textarea id="caption4" name="caption4" aria-label="Legenda real 4" placeholder="Cole uma legenda real"></textarea></div>
+          <div class="caption-row"><span class="caption-index">05</span><textarea id="caption5" name="caption5" aria-label="Legenda real 5" placeholder="Cole uma legenda real"></textarea></div>
+        </div>
+        <h3>Pilares de conteúdo</h3>
+        <p class="prompt">Marque os pilares que fazem sentido e acrescente outros.</p>
+        <div class="choice-grid">
+          <label class="choice"><input type="checkbox" name="pillars" value="Curadoria"> Curadoria de armações</label><label class="choice"><input type="checkbox" name="pillars" value="Educação"> Educação sobre visão e lentes</label>
+          <label class="choice"><input type="checkbox" name="pillars" value="Estilo"> Estilo, rosto e combinação</label><label class="choice"><input type="checkbox" name="pillars" value="Bastidores"> Bastidores e atendimento itinerante</label>
+          <label class="choice"><input type="checkbox" name="pillars" value="Empresas"> Atendimento para empresas</label><label class="choice"><input type="checkbox" name="pillars" value="Prova social"> Prova social e depoimentos</label>
+          <label class="choice"><input type="checkbox" name="pillars" value="Ofertas"> Ofertas e campanhas</label><label class="choice"><input type="checkbox" name="pillars" value="Cuidados"> Cuidados com óculos</label>
+          <label class="choice"><input type="checkbox" name="pillars" value="Local"> Taquara e Jacarepaguá</label><label class="choice"><input type="checkbox" name="pillars" value="Equipe"> Equipe e história da marca</label>
+        </div>
+        <input type="text" id="otherPillar" name="otherPillar" placeholder="Outro pilar"></input>
+        <h3>Regras e calendário</h3>
+        <div class="question"><label class="question-label" for="neverPost">Coisas que a Óticas Peixoto nunca publicaria</label><textarea id="neverPost" name="neverPost" placeholder="Liste temas, palavras, estilos ou abordagens proibidas."></textarea></div>
+        <div class="question"><label class="question-label">Mix aproximado de formatos</label><div class="table-wrap"><table class="format-table"><thead><tr><th>Formato</th><th>Percentual</th></tr></thead><tbody><tr><td>Feed estático</td><td><input type="text" id="feedPercent" name="feedPercent" placeholder="%" aria-label="Percentual feed estático"></td></tr><tr><td>Reels</td><td><input type="text" id="reelsPercent" name="reelsPercent" placeholder="%" aria-label="Percentual reels"></td></tr><tr><td>Carrossel</td><td><input type="text" id="carouselPercent" name="carouselPercent" placeholder="%" aria-label="Percentual carrossel"></td></tr><tr><td>Stories</td><td><input type="text" id="storiesPercent" name="storiesPercent" placeholder="%" aria-label="Percentual stories"></td></tr></tbody></table></div></div>
+        <div class="question"><label class="question-label" for="upcoming">Próximos eventos, campanhas ou datas sazonais</label><textarea id="upcoming" name="upcoming" placeholder="Liste data, campanha, oferta, lançamento ou evento confirmado."></textarea></div>
+      </section>
+
+      <footer class="footer">
+        <p><strong>Pronto.</strong> Revise respostas, clique em “Imprimir / PDF” e envie o arquivo para quem responde pelo negócio.</p>
+        <p>Depois, as respostas serão sintetizadas em <strong>context/brand-style.md</strong>.</p>
+      </footer>
+    </form>
+  </main>
+  <script>
+    (() => {
+      const form = document.getElementById('onboardingForm');
+      const status = document.getElementById('saveStatus');
+      const bar = document.getElementById('progressBar');
+      const progressText = document.getElementById('progressText');
+      const storageKey = 'oticas-peixoto-brand-onboarding-v1';
+      const controls = [...form.querySelectorAll('input, textarea')];
+
+      function readSaved() {
+        try { return JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch { return {}; }
+      }
+      function save() {
+        const data = {};
+        controls.forEach((control) => {
+          if (control.type === 'checkbox' || control.type === 'radio') {
+            data[control.name] = controls.filter((item) => item.name === control.name && item.checked).map((item) => item.value);
+          } else data[control.name] = control.value;
+        });
+        try { localStorage.setItem(storageKey, JSON.stringify(data)); status.textContent = 'Salvo neste navegador'; } catch { status.textContent = 'Preenchimento em andamento'; }
+        updateProgress();
+      }
+      function restore() {
+        const data = readSaved();
+        controls.forEach((control) => {
+          if (!(control.name in data)) return;
+          if (control.type === 'checkbox' || control.type === 'radio') control.checked = Array.isArray(data[control.name]) && data[control.name].includes(control.value);
+          else control.value = data[control.name] || '';
+        });
+        updateProgress();
+      }
+      function updateProgress() {
+        const answerable = controls.filter((control) => control.type !== 'checkbox' && control.type !== 'radio');
+        const filled = answerable.filter((control) => control.value.trim()).length;
+        const selectedGroups = [...new Set(controls.filter((control) => control.type === 'checkbox' || control.type === 'radio').map((control) => control.name))];
+        const selected = selectedGroups.filter((name) => controls.some((control) => control.name === name && control.checked)).length;
+        const total = answerable.length + selectedGroups.length;
+        const percent = total ? Math.round(((filled + selected) / total) * 100) : 0;
+        bar.style.width = percent + '%';
+        progressText.textContent = percent + '% respondido';
+      }
+      form.addEventListener('input', save);
+      form.addEventListener('change', save);
+      document.getElementById('printButton').addEventListener('click', () => window.print());
+      document.getElementById('clearButton').addEventListener('click', () => {
+        if (!window.confirm('Limpar todas as respostas salvas neste navegador?')) return;
+        form.reset();
+        try { localStorage.removeItem(storageKey); } catch {}
+        status.textContent = 'Formulário limpo';
+        updateProgress();
+      });
+      restore();
+    })();
+  </script>
+</body>
+</html>
